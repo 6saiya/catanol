@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getfs</title>
+    <script src="js/jq.js"></script>
+    <script src="js/upload.js"></script>
+</head>
+<body>
+    <textarea id="text" rows="30" cols="100">
+def calc_sum(*args):
+    ax = 0
+    for n in args:
+        ax = ax + n
+    return ax
+    
+def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+    </textarea>
+    <button onclick = 'upload()'>upload</button>
+</body>
+</html>
