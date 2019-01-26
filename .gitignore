@@ -60,5 +60,10 @@ typings/
 # next.js build output
 .next
 
+
 .DS_Store
-.vscode
+Thumbs.db
+access.log
+test
+package-lock.js
+node_modules
