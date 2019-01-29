@@ -21,14 +21,12 @@
     function onLoaded() {
         LayaSample.logGame = new LogGame();
         Laya.stage.addChild(LayaSample.logGame);
-        Laya.loader.load(["res/atlas/btn.atlas", "res/atlas/img.atlas", 
-        "res/atlas/home.atlas", "res/atlas/game.atlas", "res/atlas/public.atlas"
+        Laya.loader.load(["res/atlas/home.atlas", "res/atlas/game.atlas", "res/atlas/public.atlas"
         ], null, null, Laya.Loader.ATLAS);
     }
 
     function test() {
-        Laya.loader.load(["res/atlas/btn.atlas", "res/atlas/img.atlas", 
-        "res/atlas/home.atlas", "res/atlas/game.atlas", "res/atlas/public.atlas"
+        Laya.loader.load(["res/atlas/home.atlas", "res/atlas/game.atlas", "res/atlas/public.atlas"
         ], Laya.Handler.create(this, function () {
             LayaSample.Game = new Game();
             Laya.stage.addChild(LayaSample.Game);

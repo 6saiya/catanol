@@ -9,19 +9,13 @@ module.exports = {
     login: function (msg, socket, next) {
         var userName = msg[0]
         var passWord = msg[1]
-        console.log($conf)
+        console.log(msg)
    
         pool.getConnection(function (err, connection) {
             var sqlQuery = 'select * from user where userName = "' + userName + '"and passWord = "' + passWord + '"';
             connection.query(sqlQuery, function (err, result) {
-                console.log(result)
                 if (result.length) {
-                    let jStr = "{ "
-                    for (var item in result[0]) {
-                        jStr += `'${item}':'${result[0][item]}',`
-                    }
-                    jStr += " }";
-                    socket.emit('login',jStr)
+                    socket.emit('login',result[0])
                 } else {
                     socket.to(socket.id).emit('login','账号密码错误')
                 }

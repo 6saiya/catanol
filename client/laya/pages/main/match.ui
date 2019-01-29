@@ -1,6 +1,37 @@
 {
+    "x":0,
     "type":"View",
+    "selectedBox":1,
+    "selecteID":3,
     "props":{"width":1280,"sceneColor":"#000000","height":720},
+    "nodeParent":-1,
+    "label":"View",
+    "isOpen":true,
+    "isDirectory":true,
+    "isAniNode":true,
+    "hasChild":true,
+    "compId":1,
     "child":[
-        ]
+        {
+            "x":15,
+            "type":"Clip",
+            "props":{"y":178,"x":481,"skin":"public/clip_head.png","clipY":4,"clipX":4},
+            "nodeParent":1,
+            "label":"Clip",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":3,
+            "child":[
+                ]
+        }],
+    "animations":[
+        {
+            "nodes":[
+                ],
+            "name":"ani1",
+            "id":1,
+            "frameRate":24,
+            "action":0
+        }]
 }

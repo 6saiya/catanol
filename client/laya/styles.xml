@@ -1,3 +1,4 @@
 <res>
    <item name="game/bg_ocarn.png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="logon/login-bg.png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
 </res>

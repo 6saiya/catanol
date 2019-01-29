@@ -1,6 +1,26 @@
 D .
 D game
+R 5D4A3F13 bg_ocarn.png
+P DE1AD984 brick.png
+P C0E40477 city.png
+P 5343D71D clip_resource.png
+P FDD46CAA clip_role.png
+P A01E1AE5 desert.png
+P 9FE8C8F4 empty.png
+P 2483457E rount0.png
+P 03CB4010 rount1.png
+P 1D19BC75 rount2.png
+P 4C49C71A stone.png
+P 755E88C5 village.png
+P DBD978D4 wheat.png
+P FFF9C8CB wood.png
+P C9D31DAF wool.png
 D home
+P 264D2242 match.png
 D logon
+P BCED0673 login-bg.png
+P 8B68F322 login-bt.png
+P C62BC1C5 loginframe-bg2.png
 D match
 D public
+P D6738B07 clip_head.png

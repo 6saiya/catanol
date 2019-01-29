@@ -5,8 +5,8 @@ var LogGame = (function (_super) {
         this.getChildByName('logup').visible = false;
         this.getChildByName('login').getChildByName('login').on(Laya.Event.CLICK, this, this.login);
         this.getChildByName('login').getChildByName('logup').on(Laya.Event.CLICK, this, this.logup);
-        this.getChildByName('login').getChildByName('userName').on(Laya.Event.CLICK, this, function () {
-            this.getChildByName('login').getChildByName('userName').test = '';
+        this.getChildByName('login').getChildByName('username').on(Laya.Event.CLICK, this, function () {
+            this.getChildByName('login').getChildByName('username').test = '';
         });
         this.getChildByName('login').getChildByName('password').on(Laya.Event.CLICK, this, function () {
             this.getChildByName('login').getChildByName('password').test = '';
@@ -19,80 +19,25 @@ var LogGame = (function (_super) {
 
     //登陆按钮
     _proto.login = function () {
-        user.userName = this.getChildByName('login').getChildByName('userName').text;
-        user.passWord = this.getChildByName('login').getChildByName('password').text;
-        user.status = 100;
-        console.log(user)
-        $(function () {
-            $.ajax({
-                url: gameUrl + "logon/login",
-                type: "GET",
-                data: {
-                    username: user.userName,
-                    password: user.passWord
-                },
-                dataType: "text",
-                success: function (res) {
-                    if (res != "密码错误！" && res != "密码错误！") {
-                        user = eval('(' + res + ')');
-                        console.log(res);
-                        console.log(user);
-                        LayaSample.home = new Home();
-                        Laya.stage.addChild(LayaSample.home);
-                        LayaSample.logGame.removeSelf();
-                    }
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            })
-        });
-
+        user.username = this.getChildByName('login').getChildByName('username').text;
+        user.password = this.getChildByName('login').getChildByName('password').text;
+        socket.emit('login', [user.username, user.password])
+        socket.on('login',function (msg) {
+            user = msg
+            if (msg != '账号密码错误') {
+                LayaSample.home = new Home();
+                Laya.stage.addChild(LayaSample.home);
+                LayaSample.logGame.removeSelf();
+            }else{
+                
+            }
+        })
     }
 
     //注册按钮
     _proto.logup = function () {
-        this.getChildByName('logup').visible = true;
-        this.getChildByName('login').visible = false;
 
-        this.getChildByName('logup').getChildByName('logup').on(Laya.Event.CLICK, this, function () {
-            if (this.getChildByName('logup').getChildByName('userName').text == '' || this.getChildByName('logup').getChildByName('userName').text == '请输入账号' ||
-                this.getChildByName('logup').getChildByName('password').text == '' || this.getChildByName('logup').getChildByName('password').text == '请输入密码') {
-                console.log('logup error');
-            } else {
-                user.userName = this.getChildByName('logup').getChildByName('userName').text;
-                user.passWord = this.getChildByName('logup').getChildByName('password').text;
-                user.status = 101;
-                console.log(user);
-                $(function () {
-                    $.ajax({
-                        url: gameUrl + "logon/logup",
-                        type: "GET",
-                        data: {
-                            username: user.userName,
-                            password: user.passWord
-                        },
-                        success: function (res) {
-                            console.log(res);
-                            if (res == "注册成功") {
-                                LayaSample.choiceServer = new ChoiceSerchoiceServer();
-                                Laya.stage.addChild(LayaSample.choiceServer);
-                                LayaSample.logGame.removeSelf();
-                            }
-                        },
-                        error: function (err) {
-                            console.log(err);
-                        }
-                    })
-                });
-            }
-
-        });
-        this.getChildByName('logup').getChildByName('back').on(Laya.Event.CLICK, this, function () {
-            this.getChildByName('logup').visible = false;
-            this.getChildByName('login').visible = true;
-        });
     }
 
     return LogGame;
-})(ui.main.LogGameUI);
+})(ui.main.logonUI);
